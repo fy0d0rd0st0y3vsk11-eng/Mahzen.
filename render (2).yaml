@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: mahzen-fedya
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app.main
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: OWNER_DISCORD_ID
+        sync: false
+      - key: DASHBOARD_PASSWORD
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: openai/gpt-4o-mini
+      - key: DATABASE_PATH
+        value: /data/mahzen.db
+      - key: TIMEZONE
+        value: Europe/Istanbul
+    disk:
+      name: mahzen-data
+      mountPath: /data
+      sizeGB: 1
